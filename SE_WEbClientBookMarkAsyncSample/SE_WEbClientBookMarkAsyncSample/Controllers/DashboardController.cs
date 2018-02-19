@@ -25,10 +25,11 @@ namespace SE_WEbClientBookMarkAsyncSample.Controllers
 
         public Dashboard GetFeeds()
         {
-           // string emails = new WebClient().DownloadString(SiteConstant.SERVER_ADRESS + "/Emails");
-           // string myTasks = new WebClient().DownloadString("http://localhost:18545/api/Tasks");
-           // string notes = new WebClient().DownloadString("http://localhost:18545/api/Notes");
-            string bookmarks = new WebClient().DownloadString(SiteConstant.SERVER_ADRESS + "/Bookmarks");
+            // string emails = new WebClient().DownloadString(SiteConstant.SERVER_ADRESS + "/Emails");
+            // string myTasks = new WebClient().DownloadString("http://localhost:18545/api/Tasks");
+            // string notes = new WebClient().DownloadString("http://localhost:18545/api/Notes");
+            var bookMarkUrl = SiteConstant.SERVER_ADRESS + "/Bookmarks";
+            string bookmarks = new WebClient().DownloadString("http://localhost:8004/api/Bookmark");
 
             Dashboard dash = new Dashboard();
             //dash.Emails = Deserialize(emails);

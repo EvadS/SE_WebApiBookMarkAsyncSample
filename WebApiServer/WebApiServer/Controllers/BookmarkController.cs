@@ -15,6 +15,7 @@ namespace WebApiServer.Controllers
             repository = new BookMarkRepository();
         }
 
+        [HttpGet]
         public IEnumerable<Bookmark> GetBookmarks()
         {
             var res = repository.GetList();
