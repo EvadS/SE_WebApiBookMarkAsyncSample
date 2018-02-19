@@ -126,6 +126,9 @@
     <Compile Include="Abstract\BaseRepository.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BookmarkController.cs" />
+    <Compile Include="Controllers\EmailController.cs" />
+    <Compile Include="Controllers\NoteController.cs" />
+    <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -137,6 +140,9 @@
     <Compile Include="Models\MarkTaskContextInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BookMarkRepository.cs" />
+    <Compile Include="Repositories\EmailRepository.cs" />
+    <Compile Include="Repositories\MyTaskRepository.cs" />
+    <Compile Include="Repositories\NoteRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
