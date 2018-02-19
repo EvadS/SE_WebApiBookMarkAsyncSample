@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using WebApiServer.Abstract;
 using WebApiServer.Models;
@@ -41,6 +42,8 @@ namespace WebApiServer.Repositories
             return db.Notes.ToList();
         }
 
+
+
         public void Save()
         {
             db.SaveChanges();
@@ -69,5 +72,16 @@ namespace WebApiServer.Repositories
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
+        public async Task<IEnumerable<Note>> GetListAsync()
+        {
+            return await db.Notes.ToListAsync();
+        }
+
+        //private async Task<Note> privateMethod1Async()
+        //{
+        //    return await db.Notes.FirstOrDefaultAsync();
+        //}
+
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace WebApiServer.Abstract
@@ -9,6 +10,8 @@ namespace WebApiServer.Abstract
     {
         //получить все 
         IEnumerable<T> GetList();
+
+        Task<IEnumerable<T>> GetListAsync();
 
         T GetItem(int id);
 
