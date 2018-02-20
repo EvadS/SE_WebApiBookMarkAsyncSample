@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Web.Http;
 using WebApiServer.Abstract;
 using WebApiServer.Models.Entities;
@@ -8,18 +10,30 @@ namespace WebApiServer.Controllers
 {
     public class EmailController : ApiController
     {
-        private BaseRepository<Email> repository;
+        private BaseRepository<Email> repo;
 
         public EmailController()
         {
-            repository = new EmailRepository();
-        }
+            repo = new EmailRepository();
+        } 
 
         [HttpGet]
-        public IEnumerable<Email> GetEmail()
+        public async Task<IEnumerable<Email>> GetEmail()
         {
-            var res = repository.GetList();
+            await Task.Delay(500);
+            return await repo.GetListAsync();
+        }
+
+
+        [HttpGet]
+        [Route("api/email/getsync")]
+        public IEnumerable<Email> GetSync()
+        {
+            Thread.Sleep(500);
+
+            var res = repo.GetList();
             return res;
         }
+      
     }
 }

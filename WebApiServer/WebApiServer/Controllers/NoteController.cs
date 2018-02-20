@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Web.Http;
 using WebApiServer.Abstract;
 using WebApiServer.Models.Entities;
@@ -12,18 +14,30 @@ namespace WebApiServer.Controllers
 {
     public class NoteController : ApiController
     {
-        private BaseRepository<Note> repository;
+        private BaseRepository<Note> repo;
 
         public NoteController()
         {
-            repository = new NoteRepository();
+            repo = new NoteRepository();
         }
 
         [HttpGet]
-        public IEnumerable<Note> GeNotes()
+        public async Task<IEnumerable<Note>> GeNotes()
         {
-            var res = repository.GetList();
+            await Task.Delay(500);
+            return await repo.GetListAsync();
+        }
+
+
+        [HttpGet]
+        [Route("api/note/getsync")]
+        public IEnumerable<Note> GetSync()
+        {
+            Thread.Sleep(500);
+
+            var res = repo.GetList();
             return res;
         }
     }
 }
+

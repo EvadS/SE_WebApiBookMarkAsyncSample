@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using WebApiServer.Abstract;
 using WebApiServer.Models;
@@ -51,6 +52,10 @@ namespace WebApiServer.Repositories
             db.Entry(item).State = EntityState.Modified;
         }
 
+        public async Task<IEnumerable<Bookmark>> GetListAsync()
+        {
+            return await db.Bookmarks.ToListAsync();
+        }
 
 
         public virtual void Dispose(bool disposing)
@@ -70,5 +75,7 @@ namespace WebApiServer.Repositories
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
+   
     }
 }
